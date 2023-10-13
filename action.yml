@@ -1,0 +1,9 @@
+name: "Cloudflare Cache Purge Action"
+description: "GitHub Action to purge Cloudflare cache by zone name"
+author: "Andrii Rozhkov"
+branding:
+    icon: "cloud"
+    color: "orange"
+runs:
+    using: "docker"
+    image: "Dockerfile"
