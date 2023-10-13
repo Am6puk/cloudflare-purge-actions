@@ -1,5 +1,5 @@
-name: "Cloudflare Cache Purge Action"
-description: "GitHub Action to purge Cloudflare cache by zone name"
+name: "Cloudflare Cache Clear Github Action"
+description: "GitHub Action to clear Cloudflare cache by zone name"
 author: "Andrii Rozhkov"
 branding:
     icon: "cloud"
