@@ -6,8 +6,10 @@ CF_EMAIL_ADDR = os.environ.get("CF_EMAIL_ADDR")
 CF_API_KEY = os.environ.get("CF_API_KEY")
 CF_ZONE_NAME = os.environ.get("CF_ZONE_NAME")
 CF_PAGE_COUNT = os.environ.get("CF_PAGE_COUNT")
+CF_ZONE_ID = os.environ.get("CF_ZONE_ID")
 
-def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None) -> str:
+
+def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None):
 
     if per_page is not None:
         request_url = f"{CF_API_URL}/zones?per_page={per_page}"
@@ -26,6 +28,7 @@ def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None) -> st
             return zone["id"]
     return None
 
+
 def CFPrugeZoneCache(zone_id: str, headers: dict) -> None:
     payload = {
         "purge_everything": True,
@@ -35,7 +38,8 @@ def CFPrugeZoneCache(zone_id: str, headers: dict) -> None:
         print(f"Zone ID: {zone_id} Cache purged successfully.")
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
-    
+
+
 def main() -> None:
 
     headers = {
@@ -44,8 +48,12 @@ def main() -> None:
         "X-Auth-Key": f"{CF_API_KEY}",
     }
 
-    zoneID = CFGetZoneIDByName(CF_ZONE_NAME, headers, per_page=CF_PAGE_COUNT)
-    CFPrugeZoneCache(zoneID, headers)
+    if CF_ZONE_ID is None:
+        zoneID = CFGetZoneIDByName(CF_ZONE_NAME, headers)
+        CFPrugeZoneCache(zoneID, headers)
+    else:
+        CFPrugeZoneCache(CF_ZONE_ID, headers)
+
 
 if __name__ == "__main__":
     main()
