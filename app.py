@@ -5,10 +5,10 @@ CF_API_URL = "https://api.cloudflare.com/client/v4"
 CF_EMAIL_ADDR = os.environ.get("CF_EMAIL_ADDR")
 CF_API_KEY = os.environ.get("CF_API_KEY")
 CF_ZONE_NAME = os.environ.get("CF_ZONE_NAME")
-CF_ZONE_NAMES = list(os.environ.get("CF_ZONE_NAMES"))
+CF_ZONE_NAMES = os.environ.get("CF_ZONE_NAMES")
 CF_PAGE_COUNT = os.environ.get("CF_PAGE_COUNT")
 CF_ZONE_ID = os.environ.get("CF_ZONE_ID")
-CF_ZONE_IDS = list(os.environ.get("CF_ZONE_IDS"))
+CF_ZONE_IDS = os.environ.get("CF_ZONE_IDS")
 
 def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None) -> str:
 
