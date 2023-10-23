@@ -29,7 +29,7 @@ def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None) -> st
             return zone["id"]
 
 
-def CFGetZoneIDByNames(zone_names: list, headers: dict, per_page: str = None) -> list:
+def CFGetZoneIDByNames(zone_names: str, headers: dict, per_page: str = None) -> list:
     if per_page is not None:
         request_url = f"{CF_API_URL}/zones?per_page={per_page}"
     else:
@@ -43,11 +43,10 @@ def CFGetZoneIDByNames(zone_names: list, headers: dict, per_page: str = None) ->
     result = response["result"]
 
     zone_ids_list = []
-    for zone in result:
-        for name in zone_names:
-            if zone["name"] == name:
-                zone_ids_list.append(zone["id"])
 
+    for zone in result:
+        if zone["name"] in zone_names:
+            zone_ids_list.append(zone["id"])
     return zone_ids_list
 
 
@@ -62,7 +61,7 @@ def CFPrugeZoneCache(zone_id: str, headers: dict, payload: dict = None) -> None:
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
 
-def CFPrugeZonesCache(zone_ids: list, headers: dict, payload: dict = None) -> None:
+def CFPrugeZonesCache(zone_ids: str, headers: dict, payload: dict = None) -> None:
     if payload is None:
         payload = {
             "purge_everything": True,
@@ -87,13 +86,13 @@ def main() -> None:
         if CF_ZONE_ID is not None:
             CFPrugeZoneCache(CF_ZONE_ID, headers)
         else:
-            CFPrugeZonesCache(list(CF_ZONE_IDS), headers)
+            CFPrugeZonesCache(CF_ZONE_IDS, headers)
     elif CF_ZONE_NAME is not None or CF_ZONE_NAMES is not None:
         if CF_ZONE_NAME is not None:
             zoneID = CFGetZoneIDByName(CF_ZONE_NAME, headers)
             CFPrugeZoneCache(zoneID, headers)
         else:
-            zoneIDS = CFGetZoneIDByNames(list(CF_ZONE_NAMES), headers)
+            zoneIDS = CFGetZoneIDByNames(CF_ZONE_NAMES, headers)
             CFPrugeZonesCache(zoneIDS, headers)
     else:
         raise SystemExit("No one of evns is set")
