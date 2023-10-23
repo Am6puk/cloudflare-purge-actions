@@ -25,7 +25,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email and Zone Name
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -35,7 +35,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email, Zone Name and  Page count(default 20)
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -45,7 +45,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email and List of Zone Name
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -55,7 +55,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email, List of Zone Name and  Page count(default 20)
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -68,7 +68,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email and Zone ID
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -78,7 +78,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email, Zone ID and Page count(default 20)
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -88,7 +88,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email and List of Zone IDS
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -98,7 +98,7 @@ List of Zone IDS: Your domain's cloudflare identifier.
 #### Run using CloudFlare API key, Email, List of Zone IDS and Page count(default 20)
 ```yaml
     - name: Purge cache
-      uses: am6puk/cloudflare-purge-actions@v1.1.0
+      uses: am6puk/cloudflare-purge-actions@v1.1.1
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
