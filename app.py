@@ -19,6 +19,8 @@ def CFGetZoneIDByName(zone_name: str, headers: dict, per_page: str = None) -> st
 
     try:
         response = requests.get(request_url, headers=headers).json()
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
     
@@ -37,6 +39,8 @@ def CFGetZoneIDByNames(zone_names: str, headers: dict, per_page: str = None) -> 
 
     try:
         response = requests.get(request_url, headers=headers).json()
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
 
@@ -58,6 +62,8 @@ def CFPrugeZoneCache(zone_id: str, headers: dict, payload: dict = None) -> None:
     try:
         requests.post(f"{CF_API_URL}/zones/{zone_id}/purge_cache", headers=headers, json=payload)
         print(f"Zone ID: {zone_id} Cache purged successfully.")
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
 
@@ -70,6 +76,8 @@ def CFPrugeZonesCache(zone_ids: str, headers: dict, payload: dict = None) -> Non
         try:
             requests.post(f"{CF_API_URL}/zones/{zone_id}/purge_cache", headers=headers, json=payload)
             print(f"Zone ID: {zone_id} Cache purged successfully.")
+        except requests.exceptions.HTTPError as err:
+            raise SystemExit(err)
         except requests.exceptions.RequestException as e:
             raise SystemExit(e)
 
@@ -80,6 +88,7 @@ def main() -> None:
         "Content-Type": "application/json",
         "X-Auth-Email": f"{CF_EMAIL_ADDR}",
         "X-Auth-Key": f"{CF_API_KEY}",
+        "User-Agent": "github.com/Am6puk/cloudflare-purge-actions"
     }
 
     if CF_ZONE_ID is not None or CF_ZONE_IDS is not None:
