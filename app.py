@@ -98,10 +98,10 @@ def main() -> None:
             CFPrugeZonesCache(CF_ZONE_IDS, headers)
     elif CF_ZONE_NAME is not None or CF_ZONE_NAMES is not None:
         if CF_ZONE_NAME is not None:
-            zoneID = CFGetZoneIDByName(CF_ZONE_NAME, headers)
+            zoneID = CFGetZoneIDByName(CF_ZONE_NAME, headers, per_page=CF_PAGE_COUNT)
             CFPrugeZoneCache(zoneID, headers)
         else:
-            zoneIDS = CFGetZoneIDByNames(CF_ZONE_NAMES, headers)
+            zoneIDS = CFGetZoneIDByNames(CF_ZONE_NAMES, headers, per_page=CF_PAGE_COUNT)
             CFPrugeZonesCache(zoneIDS, headers)
     else:
         raise SystemExit("No one of evns is set")
